@@ -1,0 +1,12 @@
+@use "global" as *;
+.section-title__en {
+  color: $brown;
+  font-family: $en-font;
+  font-weight: $bold;
+  font-size: rem(12);
+}
+
+.section-title__jp {
+  font-size: rem(32);
+  font-weight: $bold;
+}

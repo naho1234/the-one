@@ -1,0 +1,29 @@
+@use "global" as *;
+.section-btn__link {
+  display: flex;
+  align-items: center;
+  gap: rem(32);
+}
+
+.section-btn__link-text {
+  line-height: 2;
+  color: $black;
+  font-size: rem(16);
+  font-weight: $medium;
+}
+
+.section-btn__link-arrow {
+  width: rem(80);
+  height: rem(80);
+  border-radius: 50%;
+  background-color: $beige;
+  border: rem(1) solid $orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-btn__link-arrow img {
+  width: rem(16);
+  height: rem(16);
+}

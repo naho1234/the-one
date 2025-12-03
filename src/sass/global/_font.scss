@@ -1,0 +1,55 @@
+@use "sass:math";
+
+////////////////////
+// インナー幅設定
+////////////////////
+// コンテンツのインナー幅（最も共通の幅が多い部分）
+$inner: 1280px;
+// ※キャンパス幅ではなくインナーの幅を指す
+
+// 余白
+$padding-pc: 25px;
+$padding-sp: 20px;
+// ※PC時：デザインカンプの余白の幅ではない。PC時は通常25pxで大丈夫！
+
+$device_pc: 1440;
+$device_tab: 1024;
+$device_sp: 375;
+
+////////////////////
+// フォント設定
+////////////////////
+
+@font-face {
+  font-family: "uzura";
+  src: url("../fonts/uzura_font.woff2") format("woff2"), url("../fonts/uzura_font.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$jp-font: "dnp-shuei-gothic-gin-std", sans-serif;
+$en-font: "Poppins", sans-serif;
+$uzura-font: "uzura", sans-serif;
+
+// フォントウェイト
+$regular: 400;
+$medium: 500;
+$bold: 700;
+
+// rem
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+  @return $number;
+}
+
+@function vw($window_width, $size) {
+  @return math.div($size, $window_width) * 100vw;
+}
+
+// remへの計算式（16pxを基準としている。10pxを基準とする場合は16を10に変更する）
+@function rem($pixels) {
+  @return math.div($pixels, 16) * 1rem;
+}
