@@ -1,0 +1,100 @@
+@use "global" as *;
+
+/*
+右から左へ
+----------------------------*/
+@keyframes infinity-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/*
+IE11対策
+----------------------------*/
+_:-ms-lang(x)::-ms-backdrop,
+.slide {
+  display: -ms-grid;
+  overflow: hidden;
+}
+
+/*----------------------------*/
+
+.slide__wrap {
+  display: flex;
+  overflow: hidden;
+}
+
+.slide__list {
+  display: flex;
+}
+
+.slide__list--left {
+  animation: infinity-scroll-left 60s infinite linear 0.5s both;
+
+  @include mq("md") {
+    animation: infinity-scroll-left 70s infinite linear 0.5s both;
+  }
+}
+
+.top-slide {
+  margin-top: rem(-94);
+  position: relative;
+  @include mq("md") {
+    margin-top: rem(-60);
+  }
+}
+
+.top-slide::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: rem(-54);
+  right: rem(230);
+  width: rem(88);
+  height: rem(62);
+  background-image: url("../images/work-pen.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    top: rem(-36);
+    right: rem(20);
+    width: rem(60);
+    height: rem(42);
+  }
+}
+
+.top-slide .slide__item {
+  width: rem(360);
+  aspect-ratio: 360 / 272;
+  height: auto;
+  @include mq("md") {
+    width: rem(240);
+  }
+}
+
+.slide__item + .slide__item {
+  margin-left: rem(40);
+  @include mq("md") {
+    margin-left: rem(20);
+  }
+}
+
+.slide__list + .slide__list {
+  margin-left: rem(40);
+  @include mq("md") {
+    margin-left: rem(20);
+  }
+}
+
+.slide__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: rem(20);
+}

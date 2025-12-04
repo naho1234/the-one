@@ -33,14 +33,9 @@ function add_custom_scripts() {
     // Google Fontsの追加
     wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', array(), null);
 
-	// micromodal
-  	wp_enqueue_script( 'micromodal', '//unpkg.com/micromodal/dist/micromodal.min.js', array(), '1.0.0' );
-
-	//GSAP
-	wp_enqueue_script( 'gsap', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js', array(), '3.11.5', false );
-
-    // splideのCSSの追加
-    wp_enqueue_style( 'splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', false );
+// Swiper
+wp_enqueue_script( 'swiper', '//unpkg.com/swiper@8/swiper-bundle.min.js', array(), '8.0.0', false );
+wp_enqueue_style( 'swiper', '//unpkg.com/swiper@8/swiper-bundle.min.css', array(), '8.0.0', false );
 
     // テーマのCSSの追加
     wp_enqueue_style( 'theme-style', get_theme_file_uri('assets/css/styles.css'), false );
@@ -86,4 +81,9 @@ function my_theme_disable_tinymce_formatting( $init_array ) {
     $init_array['force_p_newlines']        = false;
 
     return $init_array;
+}
+
+add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+function wpcf7_autop_return_false() {
+   return false;
 }

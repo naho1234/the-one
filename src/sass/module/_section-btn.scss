@@ -1,8 +1,9 @@
 @use "global" as *;
 .section-btn__link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: rem(32);
+  position: relative;
 }
 
 .section-btn__link-text {
@@ -10,6 +11,11 @@
   color: $black;
   font-size: rem(16);
   font-weight: $medium;
+  transition: color 0.3s ease;
+}
+
+.section-btn__link:hover .section-btn__link-text {
+  color: $brown;
 }
 
 .section-btn__link-arrow {
@@ -21,9 +27,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+  @include mq('md') {
+   width: rem(60);
+   height: rem(60);
+  }
+}
+
+.section-btn__link:hover .section-btn__link-arrow {
+  transform: translateX(rem(4));
 }
 
 .section-btn__link-arrow img {
   width: rem(16);
   height: rem(16);
+}
+
+/* 🐧 ペンギン（右からひょっこり） */
+.section-btn__link::after {
+  content: "";
+  position: absolute;
+  right: rem(-10); // どれくらい右から出すか
+  bottom: 0; // 高さの基準（調整OK）
+  width: rem(72);
+  height: rem(81);
+  background: url("../images/common/btn-pen.webp") no-repeat center/contain;
+  transform: translateX(-40%); // 最初は右に隠しておく
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none; // クリックの邪魔をしない
+}
+
+/* ホバー時：ペンギンがスライドイン */
+.section-btn__link:hover::after {
+  transform: translateX(30%);
+  opacity: 1;
 }

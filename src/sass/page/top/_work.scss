@@ -3,22 +3,10 @@
   background-color: $orange;
   padding-bottom: rem(240);
   position: relative;
-}
-
-.top-work__inner.inner {
-  max-width: rem(1140);
-}
-
-.top-work__title {
-  text-align: center;
-}
-
-.top-work__lists {
-  margin-top: rem(60);
-}
-
-.top-work__list {
-  position: relative;
+  @include mq('md') {
+    padding-bottom: rem(120);
+	padding-top: rem(40);
+  }
 }
 
 .top-work::before {
@@ -33,20 +21,63 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  @include mq("md") {
+    display: none;
+  }
+}
+
+.top-work::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: rem(750);
+  height: rem(663);
+  bottom: 0;
+  left: 0;
+  background-image: url("../images/work-tree.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    display: none;
+  }
+}
+
+.top-work__inner.inner {
+  max-width: rem(1140);
+}
+
+.top-work__title {
+  text-align: center;
+}
+
+.top-work__lists {
+  margin-top: rem(60);
+  @include mq("md") {
+    margin-top: rem(32);
+  }
+}
+
+.top-work__list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: rem(40);
+  @include mq("md") {
+    flex-direction: column;
+    gap: rem(24);
+  }
 }
 
 .top-work__list + .top-work__list {
   margin-top: rem(48);
 }
 
-.top-work__link {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.top-work__list:nth-child(even) .top-work__link {
+.top-work__list:nth-child(even) {
   flex-direction: row-reverse;
+  @include mq("md") {
+    flex-direction: column;
+  }
 }
 
 .top-work__img {
@@ -54,6 +85,9 @@
   width: 100%;
   height: auto;
   aspect-ratio: 430/323;
+  @include mq("md") {
+    max-width: rem(300);
+  }
 }
 
 .top-work__img img {
@@ -77,6 +111,9 @@
   font-size: rem(20);
   font-weight: $bold;
   margin-top: rem(4);
+  @include mq('md') {
+    font-size: rem(18);
+  }
 }
 
 .top-work__text {
@@ -85,7 +122,7 @@
   margin-top: rem(16);
 }
 
-.top-work__btn-link {
+.top-work__list-btn {
   margin-top: rem(32);
 }
 
@@ -93,6 +130,7 @@
   margin-top: rem(60);
 }
 
-.top-work__btn .section-btn__link {
+.top-work__btn {
+  display: flex;
   justify-content: center;
 }

@@ -9,4 +9,7 @@
 .section-title__jp {
   font-size: rem(32);
   font-weight: $bold;
+  @include mq('md') {
+    font-size: rem(28);
+  }
 }
